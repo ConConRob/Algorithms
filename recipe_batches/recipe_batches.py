@@ -8,12 +8,16 @@ def recipe_batches(recipe, ingredients):
     lowest_unit = 100000000000000000000000
     # for each recipe key find the number of units that can be made
     for key in recipe:
-        unit = int(ingredients[key]/recipe[key])
-        # if 0 return 0 right away
-        if unit == 0:
+        # add try to get ingredient key and if get KeyError assume dont have ingredient and return 0
+        try:
+            unit = int(ingredients[key]/recipe[key])
+            # if 0 return 0 right away
+            if unit == 0:
+                return 0
+            elif unit < lowest_unit:
+                lowest_unit = unit
+        except KeyError:
             return 0
-        elif unit < lowest_unit:
-            lowest_unit = unit
     # return lowest
     return lowest_unit
 
