@@ -4,7 +4,7 @@ import math
 
 
 def recipe_batches(recipe, ingredients):
-    # keep track of the lowest_unit
+    # keep track of the highest number
     lowest_unit = 100000000000000000000000
     # for each recipe key find the number of units that can be made
     for key in recipe:
