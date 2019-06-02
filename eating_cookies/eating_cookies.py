@@ -25,7 +25,7 @@ def eating_cookies(n, cache={}):
     return total
 
 
-print(eating_cookies(500))
+# print(eating_cookies(500))
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         num_cookies = int(sys.argv[1])
