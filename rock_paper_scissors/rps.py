@@ -17,11 +17,12 @@ def rock_paper_scissors_reducer(n, i=2, lastplays=[[play] for play in possible_s
     # base case
     if i == n + 1:
         return lastplays
-    # init case
 
-    plays = []
     # number of arrays for this i
     numarrs = 3**i
+    # plays = [[possible_selections[j*3//numarrs]] +
+    #          lastplays[int(j - numarrs//3 * (j*3//numarrs))] for j in range(numarrs)]
+    plays = []
     for j in range(numarrs):
         # make plays that start with rocks for first 3rd
         # make plays that start with papper for second 3rd
@@ -31,8 +32,10 @@ def rock_paper_scissors_reducer(n, i=2, lastplays=[[play] for play in possible_s
         # for past we need: current index - (number of loops * length last)
         # last length = numsarr/3
         # current loop of last array = j*3//numarrs
-        current_plays.extend(lastplays[int(j - numarrs//3 * (j*3//numarrs))])
-        plays.append(current_plays)
+        # changed from extends to + and it is half the speed at 15
+        # went from 42s to 20s
+        plays.append(current_plays +
+                     lastplays[int(j - numarrs//3 * (j*3//numarrs))])
     return rock_paper_scissors_reducer(n, i + 1, plays)
 
 
@@ -40,7 +43,7 @@ def rock_paper_scissors_reducer(n, i=2, lastplays=[[play] for play in possible_s
 #  the following plays in all the arrays are just the previous plays appened
 
 start = time.time()
-rock_paper_scissors(14)
+print(rock_paper_scissors(5))
 finish = time.time()
 print(finish-start)
 
