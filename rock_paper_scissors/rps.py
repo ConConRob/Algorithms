@@ -20,6 +20,7 @@ def rock_paper_scissors_reducer(n, i=2, lastplays=[[play] for play in possible_s
 
     # number of arrays for this i
     numarrs = 3**i
+    # Just for fun did it all in a Comprehension
     # plays = [[possible_selections[j*3//numarrs]] +
     #          lastplays[int(j - numarrs//3 * (j*3//numarrs))] for j in range(numarrs)]
     plays = []
